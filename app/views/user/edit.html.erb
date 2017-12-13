@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Coding Dojos</title>
+    <style>
+    body {
+        padding: 2em;
+    }
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+</head>
+<body >
+<h1>Edit My Information</h1>
+<form action="/users/<%= current_user.id %>" method="post">
+
+
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+<input type="hidden" name="_method" value="patch"> 
+<label for="first_name">First Name</label>
+<input type="text" id="first_name" name=user[first_name] placeholder="<%= current_user.first_name %>"><br>
+<label for="last_name">Last Name</label>
+<input type="text" id="last_name" name=user[last_name] placeholder="<%= current_user.last_name %>"><br>
+<label for="email">Email</label>
+<input type="text" id="email" name=user[email] placeholder="<%= current_user.email %>"><br>
+<label for="city">City</label>
+<input type="text" id="city" name=user[city] placeholder="<%= current_user.city %>"><br>
+<label for="state">State</label>
+<input type="text" id="state" name=user[state] placeholder="<%= current_user.state %>"><br>
+
+<input type="submit" name="create" value="Register">
+
+
+</form>
+<% if flash[:errors] %>
+<% flash[:errors].each do |e| %>
+    <p><%= e %></p>
+<% end %>
+<% end %>
+
+
+<a href="/users/<%= current_user.id %>">Nevermind, go back</a>
+</body>
+</html>

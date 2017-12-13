@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Coding Dojos</title>
+    <style>
+    body {
+        padding: 2em;
+    }
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+</head>
+<body >
+<h1>Register</h1>
+<form action="/user/create" method="post">
+
+<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+<label for="first_name">First Name</label>
+<input type="text" id="first_name" name=user[first_name] placeholder="First"><br>
+<label for="last_name">Last Name</label>
+<input type="text" id="last_name" name=user[last_name] placeholder="Last"><br>
+<label for="email">Email</label>
+<input type="text" id="email" name=user[email] placeholder="Email"><br>
+<label for="city">City</label>
+<input type="text" id="city" name=user[city] placeholder="City"><br>
+<label for="state">State</label>
+<input type="text" id="state" name=user[state] placeholder="State"><br>
+<label for="password">Password</label>
+<input type="text" id="password" name=user[password] placeholder="Password"><br>
+<label for="password_confirmation">Password Confirmation</label>
+<input type="text" id="password_confirmation" name=user[password_confirmation] placeholder="Retype Passowrd"><br>
+<input type="submit" name="create" value="Register">
+
+
+</form>
+<br>
+
+<h1>Log In</h1>
+<form action="/sessions/create" method="post">
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+<label for="email">Email</label>
+<input type="text" id="email" name = "email" placeholder="Email"><br>
+<label for="password">Password</label>
+<input type="text" id="password" name = "password" placeholder="Password"><br>
+<input type="submit" name="Log In" value="Log In">
+</form>
+<% if flash[:errors] %>
+<% flash[:errors].each do |e| %>
+    <p><%= e %></p>
+<% end %>
+<% end %>
+
+<a href="/">Home</a>
+</body>
+</html>
